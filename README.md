@@ -1,5 +1,9 @@
 # When the Model Says "Holup"
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-open-2DA44E?style=for-the-badge&logo=githubpages)](https://siddhantdamre.github.io/When-the-Model-Says-Holup/)
+[![Portfolio Guide](https://img.shields.io/badge/Portfolio-context-0969DA?style=for-the-badge&logo=github)](https://github.com/Siddhantdamre/Siddhantdamre/blob/main/PORTFOLIO.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A benchmark for metacognitive reasoning under partial observability.
 
 This repository tests whether models can correctly distinguish among:
@@ -12,6 +16,17 @@ The core result is simple but important:
 > Small open models can avoid bluffing and silent failure while still failing metacognitively by collapsing ordinary uncertainty into escalation instead of using abstention correctly.
 
 This benchmark does more than rank models by one score. It separates distinct metacognitive failure modes.
+
+## Recruiter Quick Look
+
+| What to check | Why it matters |
+| --- | --- |
+| [Live surface](https://siddhantdamre.github.io/When-the-Model-Says-Holup/) | Fast overview of the benchmark and current result story. |
+| `benchmarks/exec_meta_adapt/frontier/` | Frozen task set, parser, and scorer contract. |
+| `benchmarks/exec_meta_adapt/frontier_local/` | Local/open-weight model runner without API dependency. |
+| `results/` | Scored outputs for current model comparisons. |
+| `docs/releases/` | Submission-ready result writeups and figures. |
+| `docs/DEMO_ROADMAP.md` | Concrete path to a richer leaderboard/demo. |
 
 ---
 
