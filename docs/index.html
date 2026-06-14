@@ -3,74 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Holup Benchmark Lab</title>
-  <style>
-    :root { --accent: #0969da; --ink: #1f2328; --muted: #59636e; --bg: #f6f8fa; --line: #d0d7de; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
-    header { padding: 56px 24px 40px; background: linear-gradient(135deg, #ffffff 0%, #eef4ff 100%); border-bottom: 1px solid var(--line); }
-    main { max-width: 1040px; margin: 0 auto; padding: 28px 20px 56px; }
-    .hero { max-width: 1040px; margin: 0 auto; }
-    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0; text-transform: uppercase; font-size: 13px; }
-    h1 { font-size: clamp(34px, 7vw, 72px); line-height: 0.95; margin: 10px 0 18px; letter-spacing: 0; }
-    .tagline { max-width: 760px; color: var(--muted); font-size: 20px; line-height: 1.5; }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-    a.button { color: #fff; background: var(--accent); padding: 12px 16px; text-decoration: none; border-radius: 8px; font-weight: 700; }
-    a.secondary { color: var(--accent); background: #fff; border: 1px solid var(--line); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    section, .widget { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
-    section h2, .widget h2 { margin: 0 0 10px; font-size: 20px; }
-    section p, .widget p { color: var(--muted); line-height: 1.55; }
-    .widget { margin-top: 18px; }
-    .score-grid, .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-    button, input, select { font: inherit; }
-    button { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 11px; cursor: pointer; }
-    input, select { width: 100%; margin: 8px 0 16px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-    th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--line); }
-    .cards div { border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: #f6f8fa; font-weight: 700; }
-    .artifact { position: relative; height: 240px; border-radius: 8px; background: radial-gradient(circle at center, #fff, #eef4ff); border: 1px solid var(--line); overflow: hidden; }
-    .artifact span { position: absolute; width: 120px; height: 92px; border: 3px solid var(--accent); border-radius: 42% 58% 46% 54%; opacity: .82; }
-    .artifact span:nth-child(1) { left: 28%; top: 34%; transform: rotate(-12deg); }
-    .artifact span:nth-child(2) { left: 42%; top: 28%; transform: rotate(21deg); }
-    .artifact span:nth-child(3) { left: 36%; top: 48%; transform: rotate(6deg); }
-    pre { overflow: auto; background: #0d1117; color: #e6edf3; padding: 16px; border-radius: 8px; }
-    .terminal { background: #0d1117; color: #7ee787; }
-    .terminal p { color: #7ee787; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-    footer { color: var(--muted); font-size: 13px; margin-top: 28px; }
-  </style>
+  <meta name="description" content="Allocate a fixed human review-time budget across security, reliability, fraud, or operations alerts using confidence, severity, impact, and review cost.">
+  <title>Holup | Alert Budget Planner</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <div class="eyebrow">Live project surface</div>
-      <h1>Holup Benchmark Lab</h1>
-      <p class="tagline">A metacognitive reasoning benchmark for commit, abstain, and escalate decisions.</p>
-      <div class="actions">
-        <a class="button" href="https://github.com/Siddhantdamre/When-the-Model-Says-Holup">View repository</a>
-        <a class="button secondary" href="https://github.com/Siddhantdamre">GitHub profile</a>
-      </div>
+  <header class="topbar">
+    <div class="brand">
+      <strong>Holup</strong>
+      <span>Alert budget planner</span>
     </div>
+    <a class="icon-link" href="https://github.com/Siddhantdamre/When-the-Model-Says-Holup" title="View source on GitHub" aria-label="View source on GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></svg>
+    </a>
   </header>
-  <main>
-    <div class="grid"><section><h2>Novelty</h2><p>Tests whether models can treat uncertainty as an action space instead of collapsing into generic safe answers.</p></section>
-<section><h2>Demo</h2><p>Compare model behavior across partial-observability cases and inspect when a model should answer, abstain, or escalate.</p></section>
-<section><h2>Next Upgrade</h2><p>Replace these demo rows with live benchmark runs and a public leaderboard.</p></section></div>
-    
-        <div class="widget">
-          <h2>Decision Lab</h2>
-          <div class="score-grid">
-            <button data-action="commit">Commit</button><button data-action="abstain">Abstain</button><button data-action="escalate">Escalate</button>
-          </div>
-          <p id="widget-output">Scenario: evidence is partial, contradiction is moderate, downstream risk is high.</p>
+
+  <main class="app-grid">
+    <aside class="controls" aria-label="Alert data and policy">
+      <h1>Spend review time where it matters</h1>
+      <p class="intro">Paste or upload scored alerts, set the minutes your team can review, and produce a routed queue that makes the budget tradeoff explicit.</p>
+
+      <form id="planner-form">
+        <div class="file-row">
+          <label class="secondary" for="csv-file">Upload CSV</label>
+          <input id="csv-file" class="file-input" type="file" accept=".csv,text/csv">
+          <button id="example-button" class="secondary" type="button">Load SOC example</button>
         </div>
-        <script>
-          document.querySelectorAll('[data-action]').forEach(btn => btn.addEventListener('click', () => {
-            const map = {commit:'Commit only when evidence is stable and risk is low.', abstain:'Abstain when confidence is low and no recovery path exists.', escalate:'Escalate when uncertainty and impact are both high.'};
-            document.getElementById('widget-output').textContent = map[btn.dataset.action];
-          }));
-        </script>
-    <footer>Generated demo surface on 2026-05-14. Replace this with the full deployed app as the project matures.</footer>
+
+        <div class="field">
+          <label for="csv-input">Alerts CSV</label>
+          <textarea id="csv-input" spellcheck="false" required></textarea>
+          <p class="field-help">Required: <code>id,score</code>. Useful: <code>title,severity,estimated_loss,review_minutes,label,source</code>. Scores may be 0-1 or 0-100.</p>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="budget">Review budget (minutes)</label>
+            <input id="budget" type="number" min="0" max="10000" step="5" value="60">
+          </div>
+          <div class="field">
+            <label for="act-threshold">Auto-act threshold</label>
+            <input id="act-threshold" type="number" min="0.5" max="1" step="0.01" value="0.92">
+          </div>
+          <div class="field">
+            <label for="close-threshold">Auto-close threshold</label>
+            <input id="close-threshold" type="number" min="0" max="0.5" step="0.01" value="0.08">
+          </div>
+        </div>
+
+        <button class="primary" type="submit">Allocate review budget</button>
+        <p class="privacy">All processing is local to this browser. This is a policy-planning aid; connect it to validated scores, costs, and analyst feedback before operational use.</p>
+      </form>
+    </aside>
+
+    <section class="workspace" aria-live="polite">
+      <div id="empty-state" class="empty">
+        <div>
+          <div class="queue-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <strong>Turn alert volume into a review policy</strong>
+          <span>The sample is loaded. Run it, then replace it with your own scored alerts.</span>
+        </div>
+      </div>
+
+      <div id="results-shell" class="results-shell hidden">
+        <div class="result-head">
+          <div>
+            <h2>Routing plan</h2>
+            <p id="result-subtitle"></p>
+          </div>
+          <button id="download-button" class="secondary" type="button">Export routed CSV</button>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><span>Auto-act</span><strong id="metric-act"></strong></div>
+          <div class="metric"><span>Human review</span><strong id="metric-review"></strong></div>
+          <div class="metric"><span>Monitor</span><strong id="metric-monitor"></strong></div>
+          <div class="metric"><span>Auto-close</span><strong id="metric-close"></strong></div>
+          <div class="metric"><span>Budget used</span><strong id="metric-budget"></strong></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-header"><h3>Budget to incident capture</h3></div>
+            <div class="panel-body">
+              <canvas id="curve" class="curve" width="640" height="270" aria-label="Review budget curve"></canvas>
+              <p id="curve-note" class="curve-note"></p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3>Routed alerts</h3>
+              <div id="tabs" class="tabs">
+                <button class="tab active" type="button" data-route="ALL">All</button>
+                <button class="tab" type="button" data-route="ESCALATE">Review</button>
+                <button class="tab" type="button" data-route="AUTO-ACT">Act</button>
+                <button class="tab" type="button" data-route="MONITOR">Monitor</button>
+                <button class="tab" type="button" data-route="AUTO-CLOSE">Close</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Queue</th><th>Alert</th><th>Score</th><th>Severity</th><th>Route</th><th>Review</th><th>Reason</th></tr>
+                </thead>
+                <tbody id="alert-rows"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <p class="scope">The queue value is a transparent heuristic: uncertainty × severity × estimated impact, divided by review time. Labels are optional; when supplied, the curve reports observed positive-alert capture. Without labels, it reports expected risk capture.</p>
+      </div>
+    </section>
   </main>
+
+  <script type="module" src="./app.mjs"></script>
 </body>
 </html>

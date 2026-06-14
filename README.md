@@ -1,10 +1,17 @@
 # When the Model Says "Holup"
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-open-2DA44E?style=for-the-badge&logo=githubpages)](https://siddhantdamre.github.io/When-the-Model-Says-Holup/)
+[![Live Alert Planner](https://img.shields.io/badge/Live_alert_planner-open-117F8D?style=for-the-badge&logo=githubpages)](https://siddhantdamre.github.io/When-the-Model-Says-Holup/)
 [![Portfolio Guide](https://img.shields.io/badge/Portfolio-context-0969DA?style=for-the-badge&logo=github)](https://github.com/Siddhantdamre/Siddhantdamre/blob/main/PORTFOLIO.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A benchmark for metacognitive reasoning under partial observability.
+Holup has two connected surfaces:
+
+- a [live alert budget planner](https://siddhantdamre.github.io/When-the-Model-Says-Holup/) that accepts scored SOC, SRE, fraud, or operations alerts and allocates a fixed human-review-time budget
+- a benchmark for metacognitive reasoning under partial observability
+
+The browser planner runs without keys and keeps alert data local. It routes
+high-confidence alerts, prioritizes uncertain high-impact cases for human
+review, plots the budget-to-capture curve, and exports the routed queue as CSV.
 
 This repository tests whether models can correctly distinguish among:
 - `COMMIT`: evidence is sufficient for a conclusion
@@ -21,12 +28,26 @@ This benchmark does more than rank models by one score. It separates distinct me
 
 | What to check | Why it matters |
 | --- | --- |
-| [Live surface](https://siddhantdamre.github.io/When-the-Model-Says-Holup/) | Fast overview of the benchmark and current result story. |
+| [Live alert planner](https://siddhantdamre.github.io/When-the-Model-Says-Holup/) | Turns a real CSV and review-minute budget into an inspectable routing queue. |
 | `benchmarks/exec_meta_adapt/frontier/` | Frozen task set, parser, and scorer contract. |
 | `benchmarks/exec_meta_adapt/frontier_local/` | Local/open-weight model runner without API dependency. |
 | `results/` | Scored outputs for current model comparisons. |
 | `docs/releases/` | Submission-ready result writeups and figures. |
 | `docs/DEMO_ROADMAP.md` | Concrete path to a richer leaderboard/demo. |
+
+---
+
+## Direct Use: Alert Budget Planner
+
+The app requires `id,score` and accepts optional
+`title,severity,estimated_loss,review_minutes,label,source` columns. Its
+transparent review value combines uncertainty, severity, estimated impact, and
+review time. If labels are supplied, the curve reports observed positive-alert
+capture; otherwise it reports expected weighted-risk capture.
+
+This is a policy-planning aid, not an autonomous incident-response policy.
+Operational use requires calibrated scores, organization-specific costs,
+access controls, monitoring, and analyst feedback.
 
 ---
 
